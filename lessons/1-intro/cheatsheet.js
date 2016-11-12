@@ -10,14 +10,14 @@ y = 30;
 
 // Типизация нестрогая. Базовые типы:
 // число
-x = 213.2;
+y = 213.2;
 // строка
-x = 'hello';
+y = 'hello';
 // булево
-x = false;
+y = false;
 
 // Вывести в stdout:
-console.log('x is:', x);
+console.log('(log) x is:', x);
 
 
 // ** Функции **
@@ -35,22 +35,22 @@ const addFour = x => x + 4; // Если аргумент один, можно н
 // ** Массивы **
 
 const arr = [1,2,3,4];
-console.log(arr[0]); // получить элемент
+console.log('arr[0]', arr[0]); // получить элемент
 arr[2] = 100; // const значит только что переменной arr нельзя присвоить новое значение -- старое можно менять как угодно
-console.log(arr); // console.log можно передать любой объект
+console.log('mutated array', arr); // console.log можно передать любой объект
 
 // Полезные методы массива:
 arr.push(5); // Добавить элемент в конец
-console.log(arr);
+console.log('append el', arr);
 
-console.log(arr.length); // длина массива
+console.log('length', arr.length); // длина массива
 
-console.log(arr.map(addFour)); // map создает новый массив, применяя функцию к каждому элементу
-console.log(arr.map(x => x * x)); // можно создать функцию прямо на месте, а не брать из переменной
+console.log('inc by 4', arr.map(addFour)); // map создает новый массив, применяя функцию к каждому элементу
+console.log('square', arr.map(x => x * x)); // можно создать функцию прямо на месте, а не брать из переменной
 
 arr.forEach(x => console.log('element', x)); // forEach вызывает функцию для каждого элемента
 
-console.log(arr.reduce((acc, x) => acc + x, 0)); // reduce(<Function>, <initial value>)
+console.log('sum', arr.reduce((acc, x) => acc + x, 0)); // reduce(<Function>, <initial value>)
 // Для каждого элемента массива:
 // 1. получает текущее значение аккумулятора и элемента массива
 // 2. делает с ними что-то
@@ -74,7 +74,7 @@ const obj = {
   trailing: 12,
 };
 // получить элемент по ключу:
-console.log(obj.fn);
+console.log('call member funcion', obj.fn(1, 2));
 // или по-массивному:
 console.log(obj['fn']);
 // Присвоить так же.
