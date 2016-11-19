@@ -22,6 +22,53 @@
     * настраивать параметры алгоритмов.
   * Результат можно экспортировать.
 
+## Литература
+
+### Дизайн
+* Metro Map Layout Problem
+  1. [Automatic Visualisation of Metro Maps and Transportation Networks (Hong et al.)](http://www.cs.usyd.edu.au/~dmerrick/papers/HongEtAl2004b.pdf)
+  1. http://i11www.iti.uni-karlsruhe.de/extra/publications/n-asamm-14.pdf
+  1. http://www.ijcsi.org/papers/IJCSI-10-4-2-225-229.pdf
+  1. [Fast Automatic Schematics for Public Transport Spider Maps (Ribeiro, Rijo, Leal)](http://ac.els-cdn.com/S221201731200504X/1-s2.0-S221201731200504X-main.pdf?_tid=260c5e7e-acf7-11e6-9fc9-00000aab0f01&acdnat=1479408997_0fded62103caa4c60fbedadda659c0f0)
+  1. [Generating Topologically Correct Schematic Maps (Müller)](http://matthias-mueller-fischer.ch/publications/schematicMaps.pdf)
+  1. [SCHEMATIC BUS TRANSIT MAPS FOR THE WEB USING GENETIC ALGORITHMS (Galvão)](https://run.unl.pt/bitstream/10362/18403/1/TGEO0150.pdf)
+  1. [Metro Map Layout Using Multicriteria Optimization (Stott, Rodgers)](https://www.cs.kent.ac.uk/pubs/2004/1925/content.pdf)
+  https://kar.kent.ac.uk/30781/1/tvcgMetro.pdf
+  1. [Line Crossing Minimization on Metro Maps (Bekos, Kaufmann et al.)](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.114.6776&rep=rep1&type=pdf)
+  1. [The Metro Map Layout Problem (Hong, Merrick, do Nascimento)]
+  (http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.89.1137&rep=rep1&type=pdf)
+  http://crpit.com/confpapers/CRPITV35Hong.pdf
+  http://www.cs.usyd.edu.au/~dmerrick/papers/HongEtAl2004b.pdf
+  https://pdfs.semanticscholar.org/0084/4fa771c341e44d56ffb53ff6ea779df0c950.pdf
+  1. [Drawing and Labeling High-Quality Metro Maps by Mixed-Integer Programming (Nöllenburg, Wolff)](http://www1.pub.informatik.uni-wuerzburg.de/pub/wolff/pub/nw-dlhqm-10.pdf)
+  1. [Rendering Effective Route Maps: Improving Usability Through Generalization (Agrawala, Stolte)](http://graphics.stanford.edu/papers/routemaps/)
+  1. [On Metro-Line Crossing Minimization (Argyriou, Bekos)](http://www.math.ntua.gr/~symvonis/publications/j_2010_ABKS_On%20Metro-Line%20Crossing%20Minimization.pdf)
+  1. [An Improved Algorithm for the Metro-Line Crossing Minimization Problem (Nöllenburg)](http://i11www.iti.uni-karlsruhe.de/extra/publications/n-iamlc-10.pdf)
+  1. [Computer-aided design of bus route maps (Sadahiro, Tanabe et al.)](http://www.csis.u-tokyo.ac.jp/dp/126.pdf)
+  1. [Automated Drawing of Metro Maps (Nöllenburg)](http://i11www.iti.uni-karlsruhe.de/extra/publications/n-admm-05d.pdf)
+* Лайт посты / блоги
+  * http://blog.visualmotive.com/2009/automatic-generation-of-transit-maps/
+  * http://gizmodo.com/how-to-design-the-perfect-subway-map-1543146718
+  * http://glantz.net/blog/the-worlds-best-designed-metro-maps
+  * Цикл Ильи Бирмана: http://artgorbunov.ru/bb/soviet/20160105/
+  * https://medium.com/transit-app
+  * http://moovitapp.com/blog/
+  * http://www.jugcerovic.com/maps/
+  * http://transitmap.net/
+    * http://transitmap.net/post/118783719435/luxembourg-bus-2015
+    * http://transitmap.net/post/120503282870/luxembourg-bus-cerovic
+    * http://transitmap.net/post/82106605247/redesigned-metros-cerovic
+* Схема московского метро
+  * блог http://moscow-metromap.livejournal.com/
+  * Другой вариант http://ilyabirman.ru/projects/moscow-metro/
+* Визуализации
+  * http://ray-mon.com/urbandatachallenge/
+  * TRAVIC
+    * http://tracker.geops.ch/?z=14&s=1&x=-13624674.3456&y=4548253.9633&l=transport
+    * http://www.citylab.com/commute/2015/05/what-you-can-learn-watching-the-movements-of-an-entire-public-transportation-system/393281/?utm_source=SFTwitter
+    * http://www.theage.com.au/victoria/watch-melbournes-public-transport-system-move-in-real-time-20150506-ggvt0i
+
+
 ## Занятия
 
 1. 11.11.16: [вводное занятие](lessons/1-intro).
