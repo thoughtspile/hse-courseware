@@ -22,9 +22,37 @@
     * настраивать параметры алгоритмов.
   * Результат можно экспортировать.
 
+## Занятия
+
+1. 11.11.16: [вводное занятие](lessons/01-intro).
+1. 18.11.16: [функциональное программирование в js](lessons/02).
+
+
 ## Литература
 
-### Дизайн
+### Статьи
+
+* Лайт посты / блоги
+  * http://blog.visualmotive.com/2009/automatic-generation-of-transit-maps/
+  * http://gizmodo.com/how-to-design-the-perfect-subway-map-1543146718
+  * http://glantz.net/blog/the-worlds-best-designed-metro-maps
+  * Цикл Ильи Бирмана: http://artgorbunov.ru/bb/soviet/20160105/
+  * https://medium.com/transit-app
+  * http://moovitapp.com/blog/
+  * http://www.jugcerovic.com/maps/
+  * http://transitmap.net/
+    * http://transitmap.net/post/118783719435/luxembourg-bus-2015
+    * http://transitmap.net/post/120503282870/luxembourg-bus-cerovic
+    * http://transitmap.net/post/82106605247/redesigned-metros-cerovic
+  * Схема московского метро
+    * блог http://moscow-metromap.livejournal.com/
+    * Другой вариант http://ilyabirman.ru/projects/moscow-metro/
+* Визуализации
+  * http://ray-mon.com/urbandatachallenge/
+  * TRAVIC
+    * http://tracker.geops.ch/?z=14&s=1&x=-13624674.3456&y=4548253.9633&l=transport
+    * http://www.citylab.com/commute/2015/05/what-you-can-learn-watching-the-movements-of-an-entire-public-transportation-system/393281/?utm_source=SFTwitter
+    * http://www.theage.com.au/victoria/watch-melbournes-public-transport-system-move-in-real-time-20150506-ggvt0i
 * Metro Map Layout Problem
   1. [Automatic Visualisation of Metro Maps and Transportation Networks (Hong et al.)](http://www.cs.usyd.edu.au/~dmerrick/papers/HongEtAl2004b.pdf)
   1. http://i11www.iti.uni-karlsruhe.de/extra/publications/n-asamm-14.pdf
@@ -46,29 +74,3 @@
   1. [An Improved Algorithm for the Metro-Line Crossing Minimization Problem (Nöllenburg)](http://i11www.iti.uni-karlsruhe.de/extra/publications/n-iamlc-10.pdf)
   1. [Computer-aided design of bus route maps (Sadahiro, Tanabe et al.)](http://www.csis.u-tokyo.ac.jp/dp/126.pdf)
   1. [Automated Drawing of Metro Maps (Nöllenburg)](http://i11www.iti.uni-karlsruhe.de/extra/publications/n-admm-05d.pdf)
-* Лайт посты / блоги
-  * http://blog.visualmotive.com/2009/automatic-generation-of-transit-maps/
-  * http://gizmodo.com/how-to-design-the-perfect-subway-map-1543146718
-  * http://glantz.net/blog/the-worlds-best-designed-metro-maps
-  * Цикл Ильи Бирмана: http://artgorbunov.ru/bb/soviet/20160105/
-  * https://medium.com/transit-app
-  * http://moovitapp.com/blog/
-  * http://www.jugcerovic.com/maps/
-  * http://transitmap.net/
-    * http://transitmap.net/post/118783719435/luxembourg-bus-2015
-    * http://transitmap.net/post/120503282870/luxembourg-bus-cerovic
-    * http://transitmap.net/post/82106605247/redesigned-metros-cerovic
-* Схема московского метро
-  * блог http://moscow-metromap.livejournal.com/
-  * Другой вариант http://ilyabirman.ru/projects/moscow-metro/
-* Визуализации
-  * http://ray-mon.com/urbandatachallenge/
-  * TRAVIC
-    * http://tracker.geops.ch/?z=14&s=1&x=-13624674.3456&y=4548253.9633&l=transport
-    * http://www.citylab.com/commute/2015/05/what-you-can-learn-watching-the-movements-of-an-entire-public-transportation-system/393281/?utm_source=SFTwitter
-    * http://www.theage.com.au/victoria/watch-melbournes-public-transport-system-move-in-real-time-20150506-ggvt0i
-
-
-## Занятия
-
-1. 11.11.16: [вводное занятие](lessons/1-intro).
