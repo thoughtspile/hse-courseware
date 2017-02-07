@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <form id='app' class=''>
+      <div class='form-group'>
+        <label>Вид доставки</label>
+        <select v-model='delivType' class='form-control'>
+          <option value='shop'>самовывоз</option>
+          <option value='deliv'>курьер</option>
+        </select>
+      </div>
+
+      <div v-if="delivType === 'shop'" class='form-group'>
+        <label>Самовывоз из магазина</label>
+        <select class='form-control'>
+          <option v-for="shop in shops">{{ shop.name }}</option>
+        </select>
+      </div>
+
+      <div v-if="delivType === 'deliv'" class='form-group'>
+        <label >Адрес для доставки</label>
+        <input class='form-control'></input>
+      </div>
+      <button class='btn btn-primary btn-submit'>заказать</button>
+    </form>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src='index.js'></script>
+  </body>
+
+</html>
