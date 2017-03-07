@@ -1,0 +1,14 @@
+{
+  "name": "07-visualize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jeaflet.js",
+  "scripts": {
+    "dev": "http-server ./ -p 3001 -c-1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.9.0"
+  }
+}

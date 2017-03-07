@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vue</title>
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      #mapid {
+        height: 100vh;
+        width: 100vw;
+      }
+    </style>
+  </head>
+
+  <body>
+    <svg id="mapid">
+      <circle
+        v-for="stop in stops"
+        :cy="pr(stop)[0]"
+        :cx="pr(stop)[1]"
+        r="5"
+        fill="blue"
+        opacity="0.3"
+      />
+      <g v-for="route in routes">
+        <g v-for="trip in route.trips">
+          <path :d="linePlotter(trip.shape)" fill="none" :stroke="route.color" />
+        </g>
+      </g>
+    </svg>
+    <script src='vue.js'></script>
+  </body>
+</html>
