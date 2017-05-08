@@ -8,20 +8,38 @@ map.addLayer(
   new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 );
 
+const colorBtn = document.getElementById('set-color');
+
+const state = {
+  activeStop: null,
+};
+const actions = {
+  setActiveStop(stopObj) {
+    state.activeStop = stopObj;
+    colorBtn.disabled = !stopObj;
+  },
+};
+actions.setActiveStop(null);
+
 fetch('/data.json')
   .then(r => r.json())
   .then(data => {
+
     // data.stops - объект (ключ-значение).
     // Object.values делает из него массив ЗНАЧЕНИЙ (только у массива есть forEach)
     Object.values(data.stops).forEach(s => {
       // Для каждой остановки создаём кружок..
-      L.circleMarker([s.lat, s.long], { // с такими кооррдинатами...
+      const stopObj = L.circleMarker([s.lat, s.long], { // с такими кооррдинатами...
         // и таким стилем:
         stroke: false,
         color: 'navy',
         fillOpacity: 0.8,
         radius: 5,
       }).addTo(map); // и добавляем на карту
+
+      stopObj.on('click', () => {
+        actions.setActiveStop(stopObj);
+      });
     });
     // все остановки уже нарисованы!
 
@@ -36,4 +54,11 @@ fetch('/data.json')
           .addTo(map); // и цепляем на карту
       });
     });
+
+    colorBtn.addEventListener(
+      'click',
+      () => {
+        state.activeStop.setStyle({ color: 'red' });
+      }
+    );
   });

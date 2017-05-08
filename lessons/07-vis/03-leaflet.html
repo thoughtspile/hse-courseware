@@ -15,11 +15,19 @@
       #map {
         height: 100vh; /* vh = Viewport Height, 100 vh = высота окна */
       }
+
+      #set-color {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 10000;
+      }
     </style>
   </head>
 
   <body>
     <div id="map"></div>
+    <button id="set-color">ПОКРАСИТЬ</button>
 
     <!-- саму библиоекту подгружаем из интернета -->
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
