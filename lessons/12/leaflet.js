@@ -49,7 +49,7 @@ const renderNetwork = (stops, routes, map, options = {}) => {
   renderClusterLinks(clusters, map);
 
   // сбросить выбранный кластер - его уже нет на карте
-  renderActiveCluster([], map);
+  renderActiveCluster(null, map);
 }
 
 // нарисовать связи меду кластерами
@@ -90,6 +90,7 @@ const renderClusters = (clusters, map) => {
 const activeCluster = [];
 const renderActiveCluster = (cluster, map) => {
   clearFeatures(activeCluster, map);
+  if (!cluster) return;
   // для каждой остановки в кластере
   cluster.stops.forEach(stop => {
     // Рисуем точку на месте остановки
