@@ -20,27 +20,60 @@ const clearFeatures = (featureArr, map) => {
   featureArr.forEach(f => f.removeFrom(map));
   featureArr.length = 0;
 };
-const patchFeatures = (featureArr, dataArr, patch, create, map) => {
-  featureArr._group = featureArr._group || (new L.LayerGroup({ renderer: canvasRenderer })).addTo(map);
-  const group = featureArr._group;
+const patchFeatures = (vFeatures, dataArr, patch, create, hash, map) => {
+  vFeatures = vFeatures || {
+    features: [],
+    group: (new L.LayerGroup({ renderer: canvasRenderer })).addTo(map),
+  };
+  const group = vFeatures.group;
+  const featureArr = vFeatures.features;
 
-  const extraData = dataArr.length - featureArr.length;
+  const extraData = dataArr.length - vFeatures.features.length;
   for (let i = 0; i < extraData; i++) {
     const layer = create();
     group.addLayer(layer);
     featureArr.push(layer);
   }
-  for (let i = 0; i < -extraData; i++) {
-    group.removeLayer(featureArr[featureArr.length - i - 1]);
-  }
 
-  dataArr.forEach((item, i) => {
-    const layer = featureArr[i];
+  dataArr.forEach(d => {
+    d.hash = hash(d);
+  });
+  const dataHashes = dataArr.reduce((a, d) => {
+    a[d.hash] = true;
+    return a;
+  }, {})
+  const featureHashes = featureArr.reduce((a, f) => {
+    a[f._vFeatureId] = true;
+    return a;
+  }, {});
+  const absentData = dataArr.filter(function(item) {
+    return !featureHashes[item.hash];
+  });
+  const freeFeatures = [];
+  featureArr.forEach(function(f) {
+    if (!dataHashes[f._vFeatureId]) {
+      freeFeatures.push(f);
+    } else if (!group.hasLayer(f)) {
+      group.addLayer(f);
+    }
+  });
+
+  for (let i = 0; i < -extraData; i++) {
+    const lastFree = freeFeatures.pop();
+    group.removeLayer(lastFree);
+  }
+  // console.log('skip', dataArr.length - absentData.length);
+
+  absentData.forEach((item, i) => {
+    const layer = freeFeatures[i];
+    layer._vFeatureId = item.hash;
     patch(layer, item);
     if (!group.hasLayer(layer)) {
       group.addLayer(layer);
     }
   });
+
+  return vFeatures;
 };
 const includesPair = (arr, e1, e2) => {
   const L = arr.length;
@@ -74,9 +107,9 @@ const computeClusters = (network, D) => {
     }
   });
   // accelerators
-  // clusters.forEach(c => {
-  //   c.routes = c.stops.reduce((a, stop) => a.concat(stop.routes), []);
-  // });
+  clusters.forEach(c => {
+    c.id = c.stops.map(s => s.id).sort().join(':');
+  });
   return clusters;
 };
 
@@ -120,12 +153,11 @@ const renderNetwork = (network, map, options = {}) => {
 }
 
 // нарисовать связи меду кластерами
-const clusterLinkFeatures = [];
+let clusterLinkFeatures = null;
 const renderClusterLinks = (clusters, network, map) => {
   const clusterLinks = [];
   const stopIdToCluster = {};
   clusters.forEach((c, id) => {
-    c.id = id;
     c.stops.forEach(stop => {
       stopIdToCluster[stop.id] = c;
     });
@@ -147,11 +179,18 @@ const renderClusterLinks = (clusters, network, map) => {
     const c1 = centroid(link[1].stops);
     f.setLatLngs([[c0.lat, c0.long], [c1.lat, c1.long]]);
   };
-  patchFeatures(clusterLinkFeatures, clusterLinks, patchClusterLink, makeClusterLink, map);
+  clusterLinkFeatures = patchFeatures(
+    clusterLinkFeatures,
+    clusterLinks,
+    patchClusterLink,
+    makeClusterLink,
+    l => `${l[0].id}:${l[1].id}`,
+    map
+  );
 };
 
 // Нарисовать все кластеры
-const stopsOnMap = [];
+let stopsOnMap = null;
 const makeClusterMarker = () => L.circle([0, 0], { stroke: false, color: 'white' });
 const renderClusters = (clusters, map, D) => {
   const patchClusterMarker = (f, cluster) => {
@@ -167,8 +206,14 @@ const renderClusters = (clusters, map, D) => {
       () => renderActiveCluster(cluster, map, D)
     ); // по клику на кластер показывем все остановки в нем
   };
-  patchFeatures(stopsOnMap, clusters, patchClusterMarker, makeClusterMarker, map);
-  // console.log(stopsOnMap);
+  stopsOnMap = patchFeatures(
+    stopsOnMap,
+    clusters,
+    patchClusterMarker,
+    makeClusterMarker,
+    c => c.id,
+    map
+  );
 };
 
 // Отрисовать остановки в выбранном кластере
