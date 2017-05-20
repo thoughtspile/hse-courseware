@@ -20,6 +20,13 @@ const clearFeatures = (featureArr, map) => {
   featureArr.forEach(f => f.removeFrom(map));
   featureArr.length = 0;
 };
+const toBoolMap = (arr, hash) => {
+  const obj = {};
+  for (var i = 0; i < arr.length; i++) {
+    obj[hash(arr[i])] = true;
+  }
+  return obj;
+};
 const patchFeatures = (vFeatures, dataArr, patch, create, hash, map) => {
   vFeatures = vFeatures || {
     features: [],
@@ -38,17 +45,9 @@ const patchFeatures = (vFeatures, dataArr, patch, create, hash, map) => {
   dataArr.forEach(d => {
     d.hash = hash(d);
   });
-  const dataHashes = dataArr.reduce((a, d) => {
-    a[d.hash] = true;
-    return a;
-  }, {})
-  const featureHashes = featureArr.reduce((a, f) => {
-    a[f._vFeatureId] = true;
-    return a;
-  }, {});
-  const absentData = dataArr.filter(function(item) {
-    return !featureHashes[item.hash];
-  });
+  const dataHashes = toBoolMap(dataArr, d => d.hash);
+  const featureHashes = toBoolMap(featureArr, f => f._vFeatureId);
+  const absentData = dataArr.filter(item => !featureHashes[item.hash]);
   const freeFeatures = [];
   featureArr.forEach(function(f) {
     if (!dataHashes[f._vFeatureId]) {
