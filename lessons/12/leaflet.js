@@ -88,27 +88,36 @@ const includesPair = (arr, e1, e2) => {
 const computeClusters = (network, D) => {
   const stops = network.stops;
   const clusters = [];
-  stops.forEach(stop1 => {
-    const nearClust = clusters.find(clust => {
-      if (d(clust.centroid, stop1) > 2 * D) return;
+  const findNearCluster = function(stop1) {
+    for (let ic = 0; ic < clusters.length; ic++) {
+      const clust = clusters[ic];
+      if (d(clust.centroid, stop1) > 2 * D) continue;
       for (var i = 0; i < clust.stops.length; i++) {
         const stop2 = clust.stops[i];
         if (network.stopDistances[stop1.id][stop2.id] < D) {
-          return true;
+          return clust;
         }
       }
-      return false;
-    });
+    }
+    return undefined;
+  };
+
+  for (let is = 0; is < stops.length; is++) {
+    const stop1 = stops[is];
+    const nearClust = findNearCluster(stop1);
     if (nearClust) {
       nearClust.stops.push(stop1);
     } else {
       clusters.push({ stops: [stop1], centroid: centroid([stop1]) });
     }
-  });
+  }
+
   // accelerators
-  clusters.forEach(c => {
+  for (let ic = 0; ic < clusters.length; ic++) {
+    const c = clusters[ic];
     c.id = c.stops.map(s => s.id).sort().join(':');
-  });
+  }
+
   return clusters;
 };
 
